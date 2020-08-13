@@ -20,6 +20,7 @@ import 'package:video_call/services/push/push_service_ios.dart';
 import 'package:video_call/theme/voximplant_theme.dart';
 
 import 'call_failed/call_failed_page.dart';
+import 'home_page.dart';
 
 class SimpleBlocDelegate extends BlocObserver {
   @override
@@ -76,13 +77,20 @@ class App extends StatelessWidget {
           accentColor: VoximplantColors.accent,
         ),
         navigatorKey: NavigationHelper.navigatorKey,
-        initialRoute: AppRoutes.login,
+        initialRoute: AppRoutes.home,
         onGenerateRoute: (routeSettings) {
           if (routeSettings.name == AppRoutes.login) {
             return PageRouteBuilder(
               pageBuilder: (_, a1, a2) => BlocProvider<LoginBloc>(
                 create: (context) => LoginBloc()..add(LoadLastUser()),
                 child: LoginPage(),
+              ),
+            );
+          } else if (routeSettings.name == AppRoutes.home) {
+            return PageRouteBuilder(
+              pageBuilder: (_, a1, a2) => BlocProvider<LoginBloc>(
+                create: (context) => LoginBloc()..add(LoadLastUser()),
+                child: HomePage(),
               ),
             );
           } else if (routeSettings.name == AppRoutes.makeCall) {
@@ -107,10 +115,10 @@ class App extends StatelessWidget {
             return PageRouteBuilder(
               pageBuilder: (context, a1, a2) => BlocProvider<IncomingCallBloc>(
                 create: (context) =>
-                IncomingCallBloc()..add(IncomingCallEvent.readyToSubscribe),
+                    IncomingCallBloc()..add(IncomingCallEvent.readyToSubscribe),
                 child: IncomingCallPage(
                     arguments:
-                    routeSettings.arguments as IncomingCallPageArguments),
+                        routeSettings.arguments as IncomingCallPageArguments),
               ),
             );
           } else if (routeSettings.name == AppRoutes.callFailed) {
