@@ -40,6 +40,18 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+// включать если релиз делается с компа
+signingConfigs {
+	release {
+storePassword "red668483"
+keyPassword "red668483"
+keyAlias "dostpravo"
+storeFile file("c:/prise2.keystore")
+    	 
+    }
+}
+
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
@@ -58,15 +70,16 @@ android {
     }
 }
 
+
 flutter {
     source '../..'
 }
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    implementation 'com.google.firebase:firebase-messaging:20.1.3'
+    // implementation 'com.google.firebase:firebase-messaging:20.1.3'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }
 
-apply plugin: 'com.google.gms.google-services'
+// apply plugin: 'com.google.gms.google-services'
