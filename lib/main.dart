@@ -15,8 +15,8 @@ import 'package:video_call/services/call/call_service.dart';
 import 'package:video_call/services/call/callkit_service.dart';
 import 'package:video_call/services/navigation_helper.dart';
 import 'package:video_call/services/notification_service.dart';
-import 'package:video_call/services/push/push_service_android.dart';
-import 'package:video_call/services/push/push_service_ios.dart';
+// import 'package:video_call/services/push/push_service_android.dart';
+// import 'package:video_call/services/push/push_service_ios.dart';
 import 'package:video_call/theme/voximplant_theme.dart';
 
 import 'call_failed/call_failed_page.dart';
@@ -50,7 +50,7 @@ void main() {
 
   AuthService();
   CallService();
-  Platform.isIOS ? PushServiceIOS() : PushServiceAndroid();
+  // Platform.isIOS ? PushServiceIOS() : PushServiceAndroid();
 
   /// callKit for ios
   if (Platform.isIOS) {
